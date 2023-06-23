@@ -24,15 +24,11 @@ void cg::renderer::rasterization_renderer::init()
 	camera->set_angle_of_view(settings->camera_angle_of_view);
 	camera->set_z_near(settings->camera_z_near);
 	camera->set_z_far(settings->camera_z_far);
-
-
-
-	// TODO Lab: 1.06 Add depth buffer in `cg::renderer::rasterization_renderer`
 }
 void cg::renderer::rasterization_renderer::render()
 {
 	auto start = std::chrono::high_resolution_clock::now();
-	rasterizer->clear_render_target({12,19,47});
+	rasterizer->clear_render_target({0,0,0});
 
 	float4x4 matrix = mul(
 			camera->get_projection_matrix(),
@@ -59,8 +55,6 @@ void cg::renderer::rasterization_renderer::render()
 	std::cout << "Rasterization took " << duration.count() << " ms\n";
 
 	cg::utils::save_resource(*render_target, settings->result_path);
-
-	// TODO Lab: 1.03 Adjust `cg::renderer::rasterization_renderer` class to consume `cg::world::model`
 }
 
 void cg::renderer::rasterization_renderer::destroy() {}

@@ -61,7 +61,7 @@ void cg::world::camera::set_z_far(float in_z_far)
 
 const float4x4 cg::world::camera::get_view_matrix() const
 {
-	float3 up{0.f,1.f,2.f};
+	float3 up{0.f,1.f,0.f};
 	float3  eye = position + get_direction();
 
 	float3 z_axis = normalize(position - eye);
