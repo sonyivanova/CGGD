@@ -194,6 +194,7 @@ namespace cg::renderer
 			float3 right, float3 up, size_t depth, size_t accumulation_num)
 	{
 		for(int x = 0; x<width; x++){
+//#pragma omp parallel for
 			for(int y = 0; y<height; y++){
 				float u = (2.f * x) / static_cast<float>(width-1) - 1.f;
 				float v = (2.f * y) / static_cast<float>(height-1) - 1.f;
