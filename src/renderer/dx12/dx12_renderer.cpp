@@ -287,7 +287,7 @@ void cg::renderer::dx12_renderer::create_pso(const std::string& shader_name)
 			D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA,0},
 			{"NORMAL",0,DXGI_FORMAT_R32G32B32_FLOAT,0,12,
 			D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA,0},
-			{"TEXCORD",0,DXGI_FORMAT_R32G32_FLOAT,0,24,
+			{"TEXCOORD",0,DXGI_FORMAT_R32G32_FLOAT,0,24,
 			D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA,0},
 			{"COLOR",0,DXGI_FORMAT_R32G32B32_FLOAT,0,32,
 			D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA,0},
@@ -365,6 +365,7 @@ D3D12_INDEX_BUFFER_VIEW cg::renderer::dx12_renderer::create_index_buffer_view(co
 {
 	D3D12_INDEX_BUFFER_VIEW view{};
 	view.BufferLocation = index_buffer->GetGPUVirtualAddress();
+	view.SizeInBytes = index_buffer_size;
 	view.Format = DXGI_FORMAT_R32_UINT;
 	return view;
 }
